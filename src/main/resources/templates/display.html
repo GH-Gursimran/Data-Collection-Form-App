@@ -14,20 +14,20 @@
             <br>
             <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
             <div class="row text-light text-center">
-                <div class="fs-3 col">Name</div>
-                <div class="fs-3 col">Age</div>
-                <div class="fs-3 col">Email</div>
-                <div class="fs-3 col">Address</div>
-                <div class="fs-3 col">Phone Number</div>
+                <div class="fs-3 field col-2">Name</div>
+                <div class="fs-3 field  col-2">Age</div>
+                <div class="fs-3 field col-lg-3 col">Email</div>
+                <div class="fs-3 field col-lg-3 col">Address</div>
+                <div class="fs-3 field col-2 ">Phone No.</div>
             </div>
             <main id="posts">
             <post class="text-light container" th:each="u : ${users}">
                 <div class="row">
-                    <div class="fs-3 col" th:text="${u.name}">test</div>
-                    <div class="fs-3 col" th:text="${u.age}">test</div>
-                    <div class="fs-3 col" th:text="${u.email}">test</div>
-                    <div class="fs-3 col" th:text="${u.address}">test</div>
-                    <div class="fs-3 col" th:text="${u.phone}">test</div>
+                    <div class="fs-4 field col-2" th:text="${u.name}">test</div>
+                    <div class="fs-4 field col-2" th:text="${u.age}">test</div>
+                    <div class="fs-4 field col-lg-3 col" th:text="${u.email}">test</div>
+                    <div class="fs-4 field col-lg-3 col" th:text="${u.address}">test</div>
+                    <div class="fs-4 field col-2" th:text="${u.phone}">test</div>
                 </div>
                 
                 <div class="d-flex flex-row justify-content-end">
@@ -130,13 +130,15 @@
         }
     </script>
     <style>
-        .row .col{
+        .field{
             background-color: rgba(78, 78, 78, 0.616);
             border: rgb(39, 39, 39) 2px solid;
+            overflow: hidden
         }
         #main-container{
             background-color: rgb(36, 36, 36);
             min-height: 85vh;
+            padding: 20px;
         }
         .edit-btn {
             background-color: rgb(41, 160, 101);
