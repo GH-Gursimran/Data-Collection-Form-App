@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -24,10 +25,11 @@ public class displayController {
         return "display";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/edituser")
-    public String editPost(@RequestParam(name = "userId") Integer userId, user updateuser){
+    @RequestMapping(method = RequestMethod.PUT, value = "/edituser")
+    public String editPost(@RequestParam(name = "userId") Integer userId, user updateuser, RedirectAttributes redirAttrs){
         updateuser.setId(userId);
         userService.updatePost(updateuser);
+        redirAttrs.addFlashAttribute("success","User Edited Successfully");
         return "redirect:/display";
     }
 
