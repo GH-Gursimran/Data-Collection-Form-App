@@ -18,9 +18,7 @@ public class userRepo {
             entityManager.persist(newUser);
             transaction.commit();
             return true;
-
         } catch (Exception e) {
-
             System.out.println(e.getMessage());
             transaction.rollback();
             return false;
@@ -48,9 +46,6 @@ public class userRepo {
         }
     }
 
-    public void editUser(Integer userId) {
-
-    }
 
     public void updateUser(user updateuser) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -65,4 +60,31 @@ public class userRepo {
             transaction.rollback();
         }
     }
+
+    public boolean check(String userName) {
+        try {
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            TypedQuery<user> query = entityManager.createQuery( "select u from user u where Lower(u.name) = :userName",user.class);
+            query.setParameter("userName", userName.toLowerCase());
+            query.getSingleResult();
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+    public user getUser(String userName) {
+        /*EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return entityManager.find(user.class,userName);*/
+        user found;
+        try {
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            TypedQuery<user> query = entityManager.createQuery( "select u from user u where Lower(u.name) = :userName",user.class);
+            query.setParameter("userName", userName.toLowerCase());
+            found = query.getSingleResult();
+        } catch (Exception e){
+            found = null;
+        }
+        return found;
+    }
+
 }

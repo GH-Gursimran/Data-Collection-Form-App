@@ -21,14 +21,30 @@ public class displayController {
     @RequestMapping("/display")
     public String display(Model model){
         List<user> users = userService.getAllUserInfo();
+        model.addAttribute("user", new user());
         model.addAttribute("users",users);
         return "display";
     }
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "/search")
+    public String search(@RequestParam("name") String userName,Model model ,RedirectAttributes redirAttrs){
+        user user = new user();
+        if(userService.check(userName)){
+            user = userService.getUser(userName);
+            model.addAttribute("user",user);
+            return "search";
+        } else {
+            redirAttrs.addFlashAttribute("notfound","User Not Found");
+            return "redirect:/display";
+        }
+    }
+
+
     @RequestMapping(method = RequestMethod.PUT, value = "/edituser")
-    public String editPost(@RequestParam(name = "userId") Integer userId, user updateuser, RedirectAttributes redirAttrs){
+    public String editUser(@RequestParam(name = "userId") Integer userId, user updateuser, RedirectAttributes redirAttrs){
         updateuser.setId(userId);
-        userService.updatePost(updateuser);
+        userService.updateUser(updateuser);
         redirAttrs.addFlashAttribute("success","User Edited Successfully");
         return "redirect:/display";
     }
@@ -38,4 +54,5 @@ public class displayController {
         userService.deleteUser(userId);
         return "redirect:/display";
     }
+
 }

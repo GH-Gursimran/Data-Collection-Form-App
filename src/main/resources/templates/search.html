@@ -11,15 +11,9 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <h1 class="text-light">These are the User Infos</h1>
+                <h1 class="text-light">Found User:</h1>
             </div>
-            
-            <div class="col" style="margin-top: 10px;">
-                <form class="d-flex" method="GET" th:action="@{/search}" th:object="${user}">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:field="${user.name}">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
+
         </div>
         
         <div id="main-container" class="container-fluid">
@@ -33,7 +27,7 @@
                 <div class="fs-3 field col-2 ">Phone No.</div>
             </div>
             <main id="posts">
-                <post class="text-light container" th:each="u : ${users}">
+                <post class="text-light container" th:each="u : ${user}">
                     <div class="row">
                         <div class="fs-4 field col-2" th:text="${u.name}">test</div>
                         <div class="fs-4 field col-2" th:text="${u.age}">test</div>

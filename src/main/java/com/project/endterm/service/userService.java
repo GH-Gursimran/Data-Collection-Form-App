@@ -23,6 +23,7 @@ public class userService {
     }
     //public void editUser(Integer userId) {userRepo.editUser(userId);};
     public void deleteUser(Integer userId) {userRepo.deleteUser(userId);};
-    public void updatePost(user updateuser) {userRepo.updateUser(updateuser);
-    }
+    public void updateUser(user updateuser) {userRepo.updateUser(updateuser);}
+    public user getUser(String userName) {return userRepo.getUser(userName);}
+    public boolean check(String userName){return userRepo.check(userName);}
 }
