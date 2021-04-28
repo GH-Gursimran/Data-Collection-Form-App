@@ -1,0 +1,39 @@
+<html xmlns:th="http://thymeleaf.org">
+
+<head >
+    <title>Data Collection Display</title>
+</head>
+
+
+<body>
+<h1>These are the User Infos</h1>
+<main id="posts">
+    <post th:each="u : ${users}">
+        <h2 th:text="${u.id}"></h2>
+        <h2 th:text="${u.name}"></h2>
+        <h2 th:text="${u.age}"></h2>
+        <h2 th:text="${u.email}"></h2>
+        <h2 th:text="${u.address}"></h2>
+        <h2 th:text="${u.phone}"></h2>
+            <form th:object="${user}" th:action="@{/edituser(userId=${u.id}}" th:method="post">
+                <label>TEST NAME</label>
+                <input type="text"  id="name" name="name" th:value="${u.name}">
+                <label>TEST AGE</label>
+                <input type="text"  id="age" name="age" th:value="${u.age}">
+                <label>TEST EMAIL</label>
+                <input type="text"  id="email" name="email" th:value="${u.email}">
+                <label>TEST ADDRESS</label>
+                <input type="text"  id="address" name="address" th:value="${u.address}">
+                <label>TEST Phone</label>
+                <input type="text"  id="phone" name="phone" th:value="${u.phone}">
+                <button type="submit" >Submit</button>
+            </form>
+            <form th:action="@{/deleteuser(userId=${u.id})}" th:method="delete">
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+    </post>
+</main>
+</body>
+
+</html>
