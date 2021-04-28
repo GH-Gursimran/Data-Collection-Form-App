@@ -19,7 +19,7 @@
                     <label>Name: </label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Enter Name" id="name" name="name" th:field="${user.name}">
+                    <input class="form-control" type="text" placeholder="Enter Name" id="name" name="name" required th:field="${user.name}">
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <label>Age: </label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Enter Age" id="age" name="age" th:field="${user.age}">
+                    <input class="form-control" type="text" placeholder="Enter Age" id="age" name="age" required pattern="^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$" th:field="${user.age}">
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                     <label>Email: </label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Enter Email" id="email" name="email" th:field="${user.email}">
+                    <input class="form-control" type="text" placeholder="Enter Email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required name="email" th:field="${user.email}">
                 </div>
                 
             </div>
@@ -51,7 +51,7 @@
                     <label>Address: </label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Enter Address" id="address" name="address" th:field="${user.address}">
+                    <input class="form-control" type="text" placeholder="Enter Address" id="address" name="address" required th:field="${user.address}">
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <label>Phone Number: </label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Enter Phone Number" id="phone" name="phone" th:field="${user.phone}">
+                    <input class="form-control" type="text" placeholder="Enter Phone Number" id="phone" pattern="[0-9]{10}" required name="phone" th:field="${user.phone}">
                 </div>
             </div>
             <br><br>
